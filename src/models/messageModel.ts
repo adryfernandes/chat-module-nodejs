@@ -1,22 +1,13 @@
 import mongoose from "mongoose";
 
-export interface CreateMessageData {
-  content: string;
-  sender: string;
-  receiver: string;
-}
+const messageSchema = new mongoose.Schema(
+  {
+    content: { type: String, required: true },
+    sender: { type: String, required: true },
+    receiver: { type: String, required: true },
+    read: { type: Boolean, default: false },
+  },
+  { collection: "completed", timestamps: true }
+);
 
-export interface MessageDocument extends CreateMessageData, mongoose.Document {
-  createdAt: Date;
-  read: boolean;
-}
-
-const messageSchema = new mongoose.Schema<MessageDocument>({
-  content: { type: String, required: true },
-  sender: { type: String, required: true },
-  receiver: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now },
-  read: { type: Boolean, default: false },
-});
-
-export default mongoose.model<MessageDocument>("Message", messageSchema);
+export const MessageModel = mongoose.model("Completed", messageSchema);

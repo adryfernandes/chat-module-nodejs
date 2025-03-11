@@ -1,1 +1,1 @@
-export * from "./models";
+export { UserModel, MessageModel } from "./models";

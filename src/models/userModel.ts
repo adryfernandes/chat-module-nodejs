@@ -1,19 +1,10 @@
-import { randomUUID } from 'crypto';
-import mongoose, { Schema } from 'mongoose';
+import mongoose from "mongoose";
 
-export interface UserDocument {
-  _id: string;
-  username: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-const userSchema = new Schema<UserDocument>(
+const userSchema = new mongoose.Schema(
   {
-    _id: { type: String, default: () => randomUUID() },
     username: { type: String, required: true, unique: true, index: true },
   },
-  { timestamps: true }
+  { collection: "completed", timestamps: true }
 );
 
-export const UserModel = mongoose.model<UserDocument>('User', userSchema);
+export const UserModel = mongoose.model("Completed", userSchema);
