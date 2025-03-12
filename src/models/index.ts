@@ -1,2 +1,2 @@
-export * from "./messageModel";
-export * from "./userModel";
+export { MessageModel } from "./messageModel";
+export { UserModel } from "./userModel";

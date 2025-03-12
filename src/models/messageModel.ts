@@ -1,13 +1,17 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import { MessageDocument } from "@/types/messageTypes";
 
-const messageSchema = new mongoose.Schema(
+const messageSchema = new Schema<MessageDocument>(
   {
     content: { type: String, required: true },
     sender: { type: String, required: true },
     receiver: { type: String, required: true },
     read: { type: Boolean, default: false },
   },
-  { collection: "completed", timestamps: true }
+  { collection: "messages", timestamps: true }
 );
 
-export const MessageModel = mongoose.model("Completed", messageSchema);
+export const MessageModel = mongoose.model<MessageDocument>(
+  "Message",
+  messageSchema
+);
