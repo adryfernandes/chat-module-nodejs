@@ -1,6 +1,6 @@
 import { FilterQuery, Model, Document } from "mongoose";
 
-export default class BaseRepository<Entity extends Document> {
+export class Repository<Entity extends Document> {
   constructor(private model: Model<Entity>) {}
 
   async create(data: Partial<Entity>): Promise<Entity> {
