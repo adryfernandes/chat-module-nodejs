@@ -7,6 +7,9 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
+      "@models/*": ["src/models/*"],
+      "@repositories/*": ["src/repositories/*"],
+      "@types/*": ["src/types/*"],
     },
     "rootDir": "./",
     "outDir": "./build",
