@@ -1,10 +1,11 @@
-import { FilterQuery, Model, Document } from "mongoose";
+import { FilterQuery, Model, Document, SaveOptions } from "mongoose";
 
 export class Repository<Entity extends Document> {
   constructor(private model: Model<Entity>) {}
 
-  async create(data: Partial<Entity>): Promise<Entity> {
-    return this.model.create(data);
+  async create(data: Partial<Entity>, options?: SaveOptions): Promise<Entity> {
+    const document = new this.model(data);
+    return document.save(options);
   }
 
   async exist(filter: FilterQuery<Entity>): Promise<boolean> {
