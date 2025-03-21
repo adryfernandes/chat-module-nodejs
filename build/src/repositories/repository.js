@@ -14,9 +14,10 @@ class Repository {
     constructor(model) {
         this.model = model;
     }
-    create(data) {
+    create(data, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.model.create(data);
+            const document = new this.model(data);
+            return document.save(options);
         });
     }
     exist(filter) {
